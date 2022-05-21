@@ -17,3 +17,6 @@ No lugar de valor basta digitar o que deseja descriptografar.
 ### Projeto ainda em andamento, caso deseje contribuir pode entrar em contato.
 
 ### franciscocesar888@gmail.com
+
+
+### base de dados ainda em construção, poucos registros armazenados.
