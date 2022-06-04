@@ -15,19 +15,27 @@ import java.util.ArrayList;
  */
 public class Util {
 
-    private static int valorInicial = 0;
-    private static int valorFinal = 100000;
+    private int valorInicial;
+    private int valorFinal;
 
-    private static int qntCaracteres = 10;
+    private int qntCaracteres;
 
     private static ArrayList<String> lista = new ArrayList<>();
     private static String senha = "";
     private static String[] carct = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
         "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-        "!", "@", "#", "$", "%", "*", "(", ")", "-", "_", "+", "+", ".", ",", "/"};
+        "!", "@", "#", "$", "*", "(", ")", "-", "_", ".", ","};
 
-    public static void preencherBanco(DecryptDao dao) throws NoSuchAlgorithmException {
+
+    public Util(int valorInicial, int valorFinal, int qntCaracteres) {
+        this.valorInicial = valorInicial;
+        this.valorFinal = valorFinal;
+        this.qntCaracteres = qntCaracteres;
+    }
+    
+
+    public void preencherBanco(DecryptDao dao) throws NoSuchAlgorithmException {
 
         while (valorInicial < valorFinal) {
 
@@ -51,7 +59,7 @@ public class Util {
         }
     }
 
-    public static String getHashMd5(String valor) {
+    public String getHashMd5(String valor) {
         MessageDigest md;
         try {
             md = MessageDigest.getInstance("MD5");

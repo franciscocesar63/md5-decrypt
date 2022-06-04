@@ -22,12 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DecryptController {
 
+    private int valorInicial = 0;
+    private int valorFinal = 1000000000;
     @Autowired
     private DecryptRepository decryptRepository;
 
+    private Util util;
+
     @GetMapping("/get/{valor}")
     public String getDecrypt(@PathVariable String valor) {
-        
+
         Optional<Decrypt> result = decryptRepository.findByValorReal(valor);
 
         if (result.isPresent()) {
@@ -38,8 +42,15 @@ public class DecryptController {
 
     @GetMapping("/preencher")
     public String preencherDecrypt() throws NoSuchAlgorithmException {
+        System.out.println("entou preencher");
         DecryptDao dao = new DecryptDao(decryptRepository);
-        Util.preencherBanco(dao);
+
+        for (int i = 1; i < 11; i++) {
+            System.out.println("preenchendo " + i);
+            util = new Util(valorInicial, valorFinal, i);
+            util.preencherBanco(dao);
+        }
+
         return "Finalizado";
     }
 
